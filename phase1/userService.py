@@ -1,7 +1,7 @@
 from phase1.database_connection import DatabaseConnection
 from passlib.hash import sha512_crypt
 from phase1.user import User
-
+import random
 class UserService: 
     databaseConnection: DatabaseConnection
 
