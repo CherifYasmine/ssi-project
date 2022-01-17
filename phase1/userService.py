@@ -40,17 +40,14 @@ class UserService:
 
     def sendemail(self, name, code, email):
         smtp = Smtp()
-
-        message_template = self.read_template('message.txt')
+        message_template = self.read_template("phase1/message.txt")
         msg = MIMEMultipart()
         message = message_template.substitute(PERSON_NAME=name, CODE=code)
         msg['From'] = smtp.email
         msg['To'] = email
         msg['Subject'] = "Auth code"
         msg.attach(MIMEText(message, 'plain'))
-        print(msg)
 
-        # send the message via the server set up earlier.
         s = smtp.setup()
         s.send_message(msg)
 
@@ -63,7 +60,9 @@ class UserService:
         if password_verif is True:
             code = self.generate_code()
             self.sendemail(user.first_name, code, user.email)
-
-            return True
+            check = int(input('Verification code : '))
+            if code == check:
+                return True
+            return False
         else:
             return False

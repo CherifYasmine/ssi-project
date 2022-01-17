@@ -39,7 +39,6 @@ def login(userService: UserService):
 
     loggedIn = userService.login(email=email, password=password)
     if loggedIn is True:
-
         print("Login Successfully!")
     else:
         print("Please verify your credentials!")
