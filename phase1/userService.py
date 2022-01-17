@@ -1,12 +1,11 @@
+from phase1.user import User
+from phase1.smtp_setup import Smtp
+from phase1.database_connection import DatabaseConnection
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from string import Template
 import random
-from phase1.database_connection import DatabaseConnection
 from passlib.hash import sha512_crypt
-from phase1.user import User
-from phase1.smtp_setup import Smtp
-
 
 class UserService:
     databaseConnection: DatabaseConnection
