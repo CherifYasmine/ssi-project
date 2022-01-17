@@ -1,0 +1,5 @@
+Dear ${PERSON_NAME},
+
+This is your auth code:  ${{CODE}}
+
+Yours Truly
