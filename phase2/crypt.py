@@ -6,14 +6,14 @@ key2 = get_random_bytes(16)
 
 
 def des_crypt():
-   message = input("entrer votre message : ")
+   message = input("entrer le message à chiffrer DES : ")
    des = DES.new(key1, DES.MODE_ECB)
    encrypted_text: bytes = des.encrypt(message.encode() + (b" " * (8 - (len(message) % 8))))
    print(encrypted_text.hex())
 
 
 def des_decrypt():
-    message = input("entrer votre message : ")
+    message = input("entrer le message à Déchiffrer DES : ")
     des = DES.new(key1, DES.MODE_ECB)
     ciphertext: bytes = des.decrypt(bytes.fromhex(message))
     decrypted_text = ciphertext.decode("utf-8").strip()
@@ -21,14 +21,14 @@ def des_decrypt():
 
 
 def aes256_crypt():
-    message = input("entrer votre message : ")
+    message = input("entrer le message à chiffrer AES256 : ")
     cipher = AES.new(key2, AES.MODE_ECB)
     encrypted_text: bytes = cipher.encrypt(message.encode() + (b" " * (16 - (len(message) % 16))))
     print(encrypted_text.hex())
 
 
 def aes256_decrypt():
-    message = input("entrer votre message : ")
+    message = input("entrer le message à Déchiffrer AES256 :")
     cipher = AES.new(key2, AES.MODE_ECB)
     ciphertext: bytes = cipher.decrypt(bytes.fromhex(message))
     decrypted_text = ciphertext.decode("utf-8").strip()

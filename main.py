@@ -23,11 +23,11 @@ if __name__ == "__main__":
     while choice != 4:
         choice = int(
             input(
-                "Enter your choice: \n"
+                "Entrer votre choix: \n"
                 "1. Sign up.\n"
                 "2. Login.\n"
                 "3. Menu.\n"
-                "4. Quit.\n"
+                "4. Quitter.\n"
             )
         )
 
@@ -37,7 +37,7 @@ if __name__ == "__main__":
             authentification.login(userService=userService)
         elif choice == 3:
             choice_menu = int(input(
-                    "Enter your choice: \n"
+                    "Entrer votre choix: \n"
                     "1. Codage et décodage\n"
                     "   1- Codage \n"
                     "   2- Decodage \n"
@@ -56,7 +56,7 @@ if __name__ == "__main__":
                     "   1- RSA \n"
                     "   2- elgamal \n"
                     "6. Communication sécurisé entre deux clients (ChatRoom)\n"
-                    "7. Quit \n"
+                    "7. Quitter \n"
                 ))
             if choice_menu == 11:
                 message = input(" entrer votre message ")

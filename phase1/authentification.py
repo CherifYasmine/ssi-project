@@ -10,8 +10,8 @@ def sign_up(userService: UserService):
     first_name = None
     last_name = None
     while not verif:
-        email = str(input("Enter your email: "))
-        password = str(input("Enter your password: "))
+        email = str(input("Entrer votre email: "))
+        password = str(input("Entrer votre mot de passe: "))
         password_confirmation = str(input("confirm your password : "))
         # password = getpass.getpass("Enter your password: ")
         # password_confirmation = getpass.getpass("Confirm your password: ")
@@ -21,9 +21,9 @@ def sign_up(userService: UserService):
     first_name, last_name = email.split("@")[0].split(".")
     try:
         userService.add_user(first_name=first_name, last_name=last_name, email=email, password=password)
-        print("User created successfully!")
+        print("Utilisateur créé avec succés")
     except:
-        print("This user already exists, try another user!")
+        print("Cet utilisateur existe déjà, essayer de nouveau!")
         sign_up(userService=userService)
 
 
@@ -33,12 +33,12 @@ def login(userService: UserService):
     email = None
     password = None
     while email is None and password is None:
-        email = str(input("Enter your email: "))
-        password = str(input("Enter your password: "))
+        email = str(input("Entrer votre email: "))
+        password = str(input("Entrer votre mot de passe: "))
         # password = getpass.getpass("Enter your password: ")
 
     loggedIn = userService.login(email=email, password=password)
     if loggedIn is True:
-        print("Login Successfully!")
+        print("Login avec succès!")
     else:
-        print("Please verify your credentials!")
+        print("Verifier vos informations!")
