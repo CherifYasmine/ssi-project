@@ -1,5 +1,6 @@
 Dear ${PERSON_NAME},
 
-This is your auth code:  ${CODE}
+This is your Verification code:  ${CODE}
 
 Yours Truly
+Pentbox team
