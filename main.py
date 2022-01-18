@@ -1,5 +1,4 @@
 import os
-from Crypto.Random import get_random_bytes
 from dotenv import load_dotenv
 from phase1.database_connection import DatabaseConnection
 from phase1.userService import UserService
@@ -73,18 +72,16 @@ if __name__ == "__main__":
                 hash.sha256()
             if choice_menu == 41:
                 choice_crypt = int(input("1. chiffrement \n" "2. Dechiffrement \n"))
-                key = get_random_bytes(16)
                 if choice_crypt == 1:
-                    crypt.des_crypt(key)
+                    crypt.des_crypt()
                 if choice_crypt == 2:
-                    crypt.des_decrypt(key)
+                    crypt.des_decrypt()
             if choice_menu == 42:
-                key = get_random_bytes(16)
                 choice_crypt = int(input("1. chiffrement \n" "2. Dechiffrement \n"))
                 if choice_crypt ==1:
-                    crypt.aes256_crypt(key)
+                    crypt.aes256_crypt()
                 if choice_crypt == 2:
-                    crypt.aes256_decrypt(key)
+                    crypt.aes256_decrypt()
 
 
 
