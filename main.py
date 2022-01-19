@@ -7,6 +7,8 @@ from phase2 import encode_decode
 from phase2 import hash
 from phase2 import crypt
 from phase2 import crypt_asym
+from phase2 import crackhash
+
 load_dotenv(".env")
 if __name__ == "__main__":
     choice = None
@@ -71,6 +73,12 @@ if __name__ == "__main__":
                 hash.sha1()
             if choice_menu == 23:
                 hash.sha256()
+            if choice_menu == 31:
+                crackhash.md5()
+            if choice_menu == 32:
+                crackhash.sha1()
+            if choice_menu == 33:
+                crackhash.sha256()
             if choice_menu == 41:
                 choice_crypt = int(input("1. chiffrement \n" "2. Dechiffrement \n"))
                 if choice_crypt == 1:
