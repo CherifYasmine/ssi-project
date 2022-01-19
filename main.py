@@ -6,6 +6,7 @@ from phase1 import authentification
 from phase2 import encode_decode
 from phase2 import hash
 from phase2 import crypt
+from phase2 import crypt_asym
 load_dotenv(".env")
 if __name__ == "__main__":
     choice = None
@@ -82,7 +83,18 @@ if __name__ == "__main__":
                     crypt.aes256_crypt()
                 if choice_crypt == 2:
                     crypt.aes256_decrypt()
-
+            if choice_menu == 51:
+                choice_crypt = int(input("1. chiffrement \n" "2. Dechiffrement \n"))
+                if choice_crypt == 1:
+                    crypt_asym.encrypt_rsa()
+                if choice_crypt == 2:
+                    crypt_asym.decrypt_rsa()
+            if choice_menu == 52:
+                choice_crypt = int(input("1. chiffrement \n" "2. Dechiffrement \n"))
+                if choice_crypt == 1:
+                    crypt_asym.encrypt_elgamal()
+                if choice_crypt == 2:
+                    crypt_asym.decrypt_elgamal()
 
 
 
