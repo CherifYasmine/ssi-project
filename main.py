@@ -1,4 +1,6 @@
 import os
+import subprocess
+
 from dotenv import load_dotenv
 from phase1.database_connection import DatabaseConnection
 from phase1.userService import UserService
@@ -8,8 +10,18 @@ from phase2 import hash
 from phase2 import crypt
 from phase2 import crypt_asym
 from phase2 import crackhash
+import threading
 
 load_dotenv(".env")
+
+
+def start_server():
+    subprocess.call('python chatroom/server.py 9999', creationflags=subprocess.CREATE_NEW_CONSOLE)
+
+def start_client():
+    subprocess.call('python chatroom/client.py 9999', creationflags=subprocess.CREATE_NEW_CONSOLE)
+
+
 if __name__ == "__main__":
     choice = None
     DB_HOSTNAME: str = os.environ.get("DB_HOSTNAME")
@@ -61,51 +73,58 @@ if __name__ == "__main__":
                 "6. Communication sécurisé entre deux clients (ChatRoom)\n"
                 "7. Quitter \n"
             ))
-            if choice_menu == 11:
-                message = input(" entrer votre message ")
-                encode_decode.encode(message)
-            if choice_menu == 12:
-                message = input(" entrer votre message ")
-                encode_decode.decode(message)
-            if choice_menu == 21:
-                hash.md5()
-            if choice_menu == 22:
-                hash.sha1()
-            if choice_menu == 23:
-                hash.sha256()
-            if choice_menu == 31:
-                crackhash.md5()
-            if choice_menu == 32:
-                crackhash.sha1()
-            if choice_menu == 33:
-                crackhash.sha256()
-            if choice_menu == 41:
-                choice_crypt = int(input("1. chiffrement \n" "2. Dechiffrement \n"))
-                if choice_crypt == 1:
-                    crypt.des_crypt()
-                if choice_crypt == 2:
-                    crypt.des_decrypt()
-            if choice_menu == 42:
-                choice_crypt = int(input("1. chiffrement \n" "2. Dechiffrement \n"))
-                if choice_crypt == 1:
-                    crypt.aes256_crypt()
-                if choice_crypt == 2:
-                    crypt.aes256_decrypt()
-            if choice_menu == 51:
-                choice_crypt = int(input("1. chiffrement \n" "2. Dechiffrement \n"))
-                if choice_crypt == 1:
-                    crypt_asym.encrypt_rsa()
-                if choice_crypt == 2:
-                    crypt_asym.decrypt_rsa()
-            if choice_menu == 52:
-                choice_crypt = int(input("1. chiffrement \n" "2. Dechiffrement \n"))
-                if choice_crypt == 1:
-                    crypt_asym.encrypt_elgamal()
-                if choice_crypt == 2:
-                    crypt_asym.decrypt_elgamal()
+            # if choice_menu == 11:
+            #     message = input(" entrer votre message ")
+            #     encode_decode.encode(message)
+            # if choice_menu == 12:
+            #     message = input(" entrer votre message ")
+            #     encode_decode.decode(message)
+            # if choice_menu == 21:
+            #     hash.md5()
+            # if choice_menu == 22:
+            #     hash.sha1()
+            # if choice_menu == 23:
+            #     hash.sha256()
+            # if choice_menu == 31:
+            #     crackhash.md5()
+            # if choice_menu == 32:
+            #     crackhash.sha1()
+            # if choice_menu == 33:
+            #     crackhash.sha256()
+            # if choice_menu == 41:
+            #     choice_crypt = int(input("1. chiffrement \n" "2. Dechiffrement \n"))
+            #     if choice_crypt == 1:
+            #         crypt.des_crypt()
+            #     if choice_crypt == 2:
+            #         crypt.des_decrypt()
+            # if choice_menu == 42:
+            #     choice_crypt = int(input("1. chiffrement \n" "2. Dechiffrement \n"))
+            #     if choice_crypt == 1:
+            #         crypt.aes256_crypt()
+            #     if choice_crypt == 2:
+            #         crypt.aes256_decrypt()
+            # if choice_menu == 51:
+            #     choice_crypt = int(input("1. chiffrement \n" "2. Dechiffrement \n"))
+            #     if choice_crypt == 1:
+            #         crypt_asym.encrypt_rsa()
+            #     if choice_crypt == 2:
+            #         crypt_asym.decrypt_rsa()
+            # if choice_menu == 52:
+            #     choice_crypt = int(input("1. chiffrement \n" "2. Dechiffrement \n"))
+            #     if choice_crypt == 1:
+            #         crypt_asym.encrypt_elgamal()
+            #     if choice_crypt == 2:
+            #         crypt_asym.decrypt_elgamal()
 
-
-
+            if choice_menu == 6:
+                print("------------------------------CHATROOM------------------------------")
+                number = int(input("Give the number of users : \n"))
+                t = []
+                t1 = threading.Thread(target=start_server)
+                t1.start()
+                for i in range(number):
+                    t.append(threading.Thread(target=start_client))
+                    t[i].start()
 
         elif choice == 4:
             exit()
