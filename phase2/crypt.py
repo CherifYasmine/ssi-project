@@ -6,10 +6,10 @@ key2 = get_random_bytes(16)
 
 
 def des_crypt():
-   message = input("entrer le message à chiffrer DES : ")
-   des = DES.new(key1, DES.MODE_ECB)
-   encrypted_text: bytes = des.encrypt(message.encode() + (b" " * (8 - (len(message) % 8))))
-   print(encrypted_text.hex())
+    message = input("entrer le message à chiffrer DES : ")
+    des = DES.new(key1, DES.MODE_ECB)
+    encrypted_text: bytes = des.encrypt(message.encode() + (b" " * (8 - (len(message) % 8))))
+    print(encrypted_text.hex())
 
 
 def des_decrypt():
