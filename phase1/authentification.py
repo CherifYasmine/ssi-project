@@ -11,10 +11,10 @@ def sign_up(userService: UserService):
     last_name = None
     while not verif:
         email = str(input("Entrer votre email: "))
-        password = str(input("Entrer votre mot de passe: "))
-        password_confirmation = str(input("confirm your password : "))
-        # password = getpass.getpass("Enter your password: ")
-        # password_confirmation = getpass.getpass("Confirm your password: ")
+        # password = str(input("Entrer votre mot de passe: "))
+        # password_confirmation = str(input("confirm your password : "))
+        password = getpass.getpass("Enter your password: ")
+        password_confirmation = getpass.getpass("Confirm your password: ")
         email_regex = r"\b[A-Za-z0-9]+\.[A-Za-z0-9]+@insat.ucar.tn\b"
         if (re.fullmatch(email_regex, email) and password == password_confirmation and len(password) > 6):
             verif = True
@@ -34,8 +34,8 @@ def login(userService: UserService):
     password = None
     while email is None and password is None:
         email = str(input("Entrer votre email: "))
-        password = str(input("Entrer votre mot de passe: "))
-        # password = getpass.getpass("Enter your password: ")
+        # password = str(input("Entrer votre mot de passe: "))
+        password = getpass.getpass("Enter your password: ")
 
     loggedIn = userService.login(email=email, password=password)
     if loggedIn is True:
