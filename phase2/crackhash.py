@@ -17,7 +17,7 @@ def md5():
             fp.close()
 
 def sha1():
-    msg = input("Entrer le mesaage a craquer md5 : \n")
+    msg = input("Entrer le mesaage a craquer sha1 : \n")
     try:
             fp = open("C:/Users/Yasmine/Desktop/ssi-project/phase2/dictionnaire.txt")
             line = fp.readline().strip()
@@ -33,7 +33,7 @@ def sha1():
             fp.close()
 
 def sha256():
-    msg = input("Entrer le mesaage a craquer md5 : \n")
+    msg = input("Entrer le mesaage a craquer sha256 : \n")
     try:
             fp = open("C:/Users/Yasmine/Desktop/ssi-project/phase2/dictionnaire.txt")
             line = fp.readline().strip()
