@@ -116,9 +116,6 @@ if __name__ == "__main__":
                 if choice_crypt == 2:
                     crypt_asym.decrypt_elgamal()
             if choice_menu == 6:
-                print("CHATROOM")
-
-            if choice_menu == 6:
                 print("------------------------------CHATROOM------------------------------")
                 number = int(input("Give the number of users : \n"))
                 t = []
