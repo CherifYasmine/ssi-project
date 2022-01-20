@@ -1,4 +1,5 @@
 import os
+import subprocess
 from dotenv import load_dotenv
 from phase1.database_connection import DatabaseConnection
 from phase1.userService import UserService
@@ -103,7 +104,8 @@ if __name__ == "__main__":
                     crypt_asym.encrypt_elgamal()
                 if choice_crypt == 2:
                     crypt_asym.decrypt_elgamal()
-
+            if choice_menu == 6:
+                print("CHATROOM")
 
 
 
